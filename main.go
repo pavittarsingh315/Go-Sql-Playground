@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fiber-gorm-tutorial/database"
 	"log"
 
 	"github.com/gofiber/fiber/v2"
@@ -11,6 +12,8 @@ func welcome(c *fiber.Ctx) error {
 }
 
 func main() {
+	database.ConnectDb()
+
 	app := fiber.New()
 
 	app.Get("/", welcome)

@@ -1,6 +1,7 @@
 package database
 
 import (
+	"fiber-gorm-tutorial/models"
 	"log"
 	"os"
 
@@ -26,7 +27,7 @@ func ConnectDb() {
 	db.Logger = logger.Default.LogMode(logger.Info)
 	log.Println("Running migrations...")
 
-	// TODO: Add migrations
+	db.AutoMigrate(&models.User{}, &models.Product{}, &models.Order{})
 
 	Database = DbInstance{
 		Db: db,
